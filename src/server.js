@@ -1,7 +1,10 @@
 const express = require('express');
 const app = express();
 const cors = require('cors');
-app.use(cors())
+app.use(cors({
+    origin: '*',
+    methods: ['GET']
+}));
 require('./database/connect/mongo_connection');
 const tourRouter = require('./router/tour_router')
 const port = process.env.PORT || 5000;
