@@ -7,7 +7,6 @@ tourRouter.post('/post',async(req, res)=>{
     try {
     const tourModel = new TourModel(req.body);
     const savedTour = await tourModel.save();
-    console.log(savedTour);
     res.status(200).send(savedTour);
 }
 
@@ -54,7 +53,9 @@ tourRouter.patch('/patch/:id',async(req, res)=>{
     const patch = req.body;
     const patchData = await TourModel.findByIdAndUpdate(id, patch,{
         new:true,
-    })    
+    }) 
+    
+    res.status(200).send(patchData)
     }
 
     catch(err){
